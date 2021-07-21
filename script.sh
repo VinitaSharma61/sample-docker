@@ -1,3 +1,4 @@
+#!/bin/bash
 set -e
 
 #msg() { echo -e "\e[32mINFO [$(date +%F_%H-%M-%S)] ---> $1\e[0m"; }
@@ -11,8 +12,8 @@ REQUIRED_VARS=(
 )
 
 if [ -z "$DOCKER_URL" ]; then
-  docker login -u DOCKER_USERNAME -p DOCKER_PASSWORD
+  docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
 else
-  docker login $DOCKER_URL -u DOCKER_USERNAME -p DOCKER_PASSWORD
+  docker login $DOCKER_URL -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
 fi  
   
