@@ -11,8 +11,8 @@ REQUIRED_VARS=(
   DOCKER_PASSWORD
 )
 
-if [ -z "$DOCKER_URL" ]; then
-  docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
+if [ ! -z "$DOCKER_URL" ]; then
+  echo $DOCKER_PASSWORD | docker login -u $DOCKER_USERNAME --password-stdin
 else
-  docker login $DOCKER_URL -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
+  echo $DOCKER_PASSWORD | docker login $DOCKER_URL -u $DOCKER_USERNAME --password-stdin
 fi
